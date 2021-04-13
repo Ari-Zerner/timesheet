@@ -1,0 +1,61 @@
+name:                Timesheet
+version:             1.0.0
+github:              "ari-zerner/timesheet"
+license:             BSD3
+author:              "Ari Zerner"
+maintainer:          "ari@zerner.com"
+copyright:           "2021 Ari Zerner"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            A command-line interface for tracking hours worked
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/ari-zerner/timesheet#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- time >= 1.9.3 && < 2
+- structured-cli >= 2.6 && < 3
+- data-default >= 0.7.1.1 && < 1
+- mtl >= 2.2.2 && < 3
+
+library:
+  source-dirs: src
+  when:
+  - condition: false
+    other-modules: Paths_Timesheet
+
+executables:
+  Timesheet-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Timesheet
+    when:
+    - condition: false
+      other-modules: Paths_Timesheet
+
+tests:
+  Timesheet-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Timesheet
+    when:
+    - condition: false
+      other-modules: Paths_Timesheet
